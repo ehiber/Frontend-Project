@@ -1,5 +1,5 @@
 {
-	"name": "react-hello-webapp",
+	"name": "frontend-project",
 	"version": "1.0.1",
 	"description": "",
 	"main": "index.js",
@@ -11,19 +11,9 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Ehiber Graterol",
+		"url": "https://github.com/ehiber/Frontend-Project"
 	},
-	"contributors": [
-		{
-			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
-		},
-		{
-			"name": "Ignacio Cordoba",
-			"url": "http://github.com/nachovz"
-		}
-	],
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/cli": "^7.4.3",
@@ -54,7 +44,7 @@
 		"remote-origin-url": "^1.0.0",
 		"sass-loader": "^6.0.6",
 		"style-loader": "^0.19.0",
-		"webpack": "^4.0.1",
+		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.0",
 		"webpack-dev-server": "^3.3.1",
 		"webpack-merge": "^4.2.1"
@@ -75,6 +65,7 @@
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router": "^4.3.1",
-		"react-router-dom": "^4.3.1"
+		"react-router-dom": "^4.3.1",
+		"serialize-javascript": "^2.1.2"
 	}
 }
