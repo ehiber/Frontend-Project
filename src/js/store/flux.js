@@ -1,42 +1,77 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			users:[
+                {
+                    nombre: "Ehiber",
+                    apellido: "Graterol",
+                    fecha: "01-02-1994",
+                    email: "ehiber5@hotmail.com",
+                    usuario: "ehiber5",
+                    password: "1234abCD!",
+                    ciudad: "Guatire",
+                    estado: "Miranda",
+                    pais: "Venezuela"
+                }
+            ],
+
+            isLogIn: false
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+            fetchRegisterUser : (user) =>{
+                const store = getStore();
 
-				//reset the global store
-				setStore({ demo: demo });
+                setStore({
+                    users: [...users,user]
+                });
+            },
+
+            fetchUserLogIn : (username,password) =>{
+                const store = getStore();
+
+                for (i = 0; i < store.users.length; i++){
+                    if ((store.users[i].usuario === username || store.users[i].email === username) && store.users[i].password === password){
+                        setStore({
+                            isLogIn:true
+                        })
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+
+            fetchUserLogOut : () =>{
+                const store = getStore();
+
+                setStore({
+                    isLogIn:false
+                })
+            }
+
+			// // Use getActions to call a function within a fuction
+			// exampleFunction: () => {
+			// 	getActions().changeColor(0, "green");
+			// },
+			// loadSomeData: () => {
+			// 	/**
+			// 		fetch().then().then(data => setStore({ "foo": data.bar }))
+			// 	*/
+			// },
+			// changeColor: (index, color) => {
+			// 	//get the store
+			// 	const store = getStore();
+
+			// 	//we have to loop the entire demo array to look for the respective index
+			// 	//and change its color
+			// 	const demo = store.demo.map((elm, i) => {
+			// 		if (i === index) elm.background = color;
+			// 		return elm;
+			// 	});
+
+			// 	//reset the global store
+			// 	setStore({ demo: demo });
 			}
 		}
 	};
