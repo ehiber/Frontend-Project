@@ -1,54 +1,66 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			users:[
-                {
-                    nombre: "Ehiber",
-                    apellido: "Graterol",
-                    fecha: "01-02-1994",
-                    email: "ehiber5@hotmail.com",
-                    usuario: "ehiber5",
-                    password: "1234abCD!",
-                    ciudad: "Guatire",
-                    estado: "Miranda",
-                    pais: "Venezuela"
-                }
-            ],
+			users: [
+				{
+					nombre: "Ehiber",
+					apellido: "Graterol",
+					fecha: "01-02-1994",
+					email: "ehiber5@hotmail.com",
+					usuario: "ehiber5",
+					password: "12345abC!",
+					ciudad: "Guatire",
+					estado: "Miranda",
+					pais: "Venezuela"
+				},
+				{
+					nombre: "Juan",
+					apellido: "Perez",
+					fecha: "01-02-1994",
+					email: "juanperez@hotmail.com",
+					usuario: "juanperez",
+					password: "123456aB!",
+					ciudad: "Guatire",
+					estado: "Miranda",
+					pais: "Venezuela"
+				}
+			],
 
-            isLogIn: false
+			isLogIn: false
 		},
 		actions: {
+			fetchRegisterUser: user => {
+				const store = getStore();
 
-            fetchRegisterUser : (user) =>{
-                const store = getStore();
+				setStore({
+					users: [...store.users, user]
+				});
+			},
 
-                setStore({
-                    users: [...users,user]
-                });
-            },
+			fetchUserLogIn: (username, password) => {
+				const store = getStore();
 
-            fetchUserLogIn : (username,password) =>{
-                const store = getStore();
+				for (let i = 0; i < store.users.length; i++) {
+					if (
+						(store.users[i].usuario === username || store.users[i].email === username) &&
+						store.users[i].password === password
+					) {
+						setStore({
+							isLogIn: true
+						});
+						return true;
+					}
+				}
+				return false;
+			},
 
-                for (i = 0; i < store.users.length; i++){
-                    if ((store.users[i].usuario === username || store.users[i].email === username) && store.users[i].password === password){
-                        setStore({
-                            isLogIn:true
-                        })
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            },
+			fetchUserLogOut: () => {
+				const store = getStore();
 
-            fetchUserLogOut : () =>{
-                const store = getStore();
-
-                setStore({
-                    isLogIn:false
-                })
-            }
+				setStore({
+					isLogIn: false
+				});
+			}
 
 			// // Use getActions to call a function within a fuction
 			// exampleFunction: () => {
@@ -72,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// 	//reset the global store
 			// 	setStore({ demo: demo });
-			}
+			// }
 		}
 	};
 };

@@ -76,7 +76,7 @@ const RegisterForm = props => {
 		return param1 === param2;
 	};
 
-	async const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
 
 		if (
@@ -104,8 +104,7 @@ const RegisterForm = props => {
 			};
 
 			await actions.fetchRegisterUser(newUser);
-			actions.fetchUserLogIn(newUser.username, newUser.password);
-			
+			actions.fetchUserLogIn(newUser.usuario, newUser.password);
 		} else {
 			setError(true);
 		}

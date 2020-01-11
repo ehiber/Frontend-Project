@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const Torneos = props => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[props.match.params.theid].title}</h1>
+			<h1 className="display-4">This will show the demo element: </h1>
 
 			<hr className="my-4" />
 
@@ -20,6 +20,6 @@ export const Single = props => {
 	);
 };
 
-Single.propTypes = {
+Torneos.propTypes = {
 	match: PropTypes.object
 };
