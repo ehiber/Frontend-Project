@@ -10,7 +10,7 @@ import JuegosNS from "./JuegosNS";
 
 export const Juegos = props => {
 	const { store, actions } = useContext(Context);
-	let match = useRouteMatch();
+	const match = useRouteMatch();
 	return (
 		<Fragment>
 			<div className="jumbotron">
@@ -52,7 +52,7 @@ export const Juegos = props => {
 					</div>
 				</div>
 			</nav>
-			<h2>Hola soy juegos con el filtro {match.params.filter}</h2>
+			<h2>{"Hola soy juegos con el filtro " + match.params.filter}</h2>
 			{/* <Switch>
 				<Route exact path={match.path + "/:filter"}>
 					

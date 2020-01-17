@@ -10,7 +10,7 @@ import JuegosPC from "./views/JuegosPC";
 import JuegosXO from "./views/JuegosXO";
 import { Torneos } from "./views/Torneos";
 import injectContext from "./store/appContext";
-
+import Ernesto from "./views/Ernesto";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -29,7 +29,8 @@ export const Layout = () => {
 						<Route exact path="/" component={Home} />
 						<Route path="/register" component={Register} />
 						<Route path="/login" component={LogIn} />
-						<Route path="/juegos/:filter" component={Juegos} />
+						<Route path="/juegos/:filter?" component={Juegos} />
+						<Route path="/ernesto/:clue" component={Ernesto} />
 						<Route path="/torneos" component={Torneos} />
 
 						{/* <Route exact path="/juegos/ruta" component={JuegosPC} />
