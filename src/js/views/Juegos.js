@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch, Route, Switch } from "react-router-dom";
 import { Context } from "../store/appContext";
+import JuegosPC from "./JuegosPC";
+import JuegosXO from "./JuegosXO";
+import JuegosM from "./JuegosM";
+import JuegosPS from "./JuegosPS";
+import JuegosNS from "./JuegosNS";
 
 export const Juegos = props => {
 	const { store, actions } = useContext(Context);
+	let match = useRouteMatch();
 	return (
 		<Fragment>
 			<div className="jumbotron">
@@ -28,28 +34,41 @@ export const Juegos = props => {
 						<Link className="nav-item nav-link mx-3" to="/Juegos">
 							Todos
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/Juegos/pc">
+						<Link className="nav-item nav-link mx-3" to="/juegos/pc">
 							PC
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/Juegos/xbox-one">
+						<Link className="nav-item nav-link mx-3" to="/juegos/xbox-one">
 							Xbox One
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/Juegos/ps4">
+						<Link className="nav-item nav-link mx-3" to="/juegos/ps4">
 							PS4
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/Juegos/nintendo-switch">
+						<Link className="nav-item nav-link mx-3" to="/juegos/nintendo-switch">
 							Nintendo Switch
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="movil">
+						<Link className="nav-item nav-link mx-3" to="/juegos/movil">
 							Movil
 						</Link>
 					</div>
 				</div>
 			</nav>
+			<h2>Hola soy juegos con el filtro {match.params.filter}</h2>
+			{/* <Switch>
+				<Route exact path={match.path + "/:filter"}>
+					
+				</Route>
+				<Route exact path={match.path}>
+					<h2>Hola, no hay filtro</h2>
+				</Route>
+				<Route exact path="/juegos/ps4" component={JuegosPS} />
+				<Route exact path="/juegos/nintendo-switch" component={JuegosNS} />
+				<Route exact path="/juegos/movil" component={JuegosM} />
+				<Route render={() => <h1>Not found!</h1>} />
+			</Switch> */}
 		</Fragment>
 	);
 };
 
-Juegos.propTypes = {
-	match: PropTypes.object
-};
+// Juegos.propTypes = {
+// 	match: PropTypes.object
+// };

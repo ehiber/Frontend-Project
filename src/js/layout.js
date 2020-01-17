@@ -6,6 +6,8 @@ import { Home } from "./views/home";
 import { Register } from "./views/Register.js";
 import { LogIn } from "./views/LogIn.js";
 import { Juegos } from "./views/Juegos";
+import JuegosPC from "./views/JuegosPC";
+import JuegosXO from "./views/JuegosXO";
 import { Torneos } from "./views/Torneos";
 import injectContext from "./store/appContext";
 
@@ -27,8 +29,12 @@ export const Layout = () => {
 						<Route exact path="/" component={Home} />
 						<Route path="/register" component={Register} />
 						<Route path="/login" component={LogIn} />
-						<Route path="/juegos" component={Juegos} />
+						<Route path="/juegos/:filter" component={Juegos} />
 						<Route path="/torneos" component={Torneos} />
+
+						{/* <Route exact path="/juegos/ruta" component={JuegosPC} />
+						<Route exact path="/juegos/xbox-one" component={JuegosXO} /> */}
+
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />
