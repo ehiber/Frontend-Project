@@ -15,7 +15,8 @@ const RegisterForm = props => {
 		confirmapassword: "",
 		ciudad: "",
 		estado: "",
-		pais: ""
+		pais: "",
+		description: ""
 	});
 	const { store, actions } = useContext(Context);
 	const [error, setError] = useState(false);
@@ -92,19 +93,20 @@ const RegisterForm = props => {
 			validatedConfirm(inputValues.password, inputValues.confirmapassword)
 		) {
 			const newUser = {
-				nombre: inputValues.nombre,
-				apellido: inputValues.apellido,
-				fecha: inputValues.fecha,
+				username: inputValues.usuario,
 				email: inputValues.email,
-				usuario: inputValues.usuario,
 				password: inputValues.password,
-				ciudad: inputValues.ciudad,
-				estado: inputValues.estado,
-				pais: inputValues.pais
+				name: inputValues.nombre,
+				last_name: inputValues.apellido,
+				date_of_birth: inputValues.fecha,
+				country: inputValues.pais,
+				state: inputValues.estado,
+				city: inputValues.ciudad,
+				description: inputValues.description
 			};
 
 			await actions.fetchRegisterUser(newUser);
-			actions.fetchUserLogIn(newUser.usuario, newUser.password);
+			actions.fetchUserLogIn(newUser.username, newUser.password);
 		} else {
 			setError(true);
 		}
@@ -304,7 +306,15 @@ const RegisterForm = props => {
 						Descripcion
 					</label>
 					<div className="col-sm-10">
-						<textarea className="form-control" id="textareaDescripcionRegister" rows="3" />
+						<textarea
+							type="text"
+							className="form-control"
+							id="textareaDescripcionRegister"
+							rows="3"
+							onChange={handleChangeInput}
+							value={inputValues.description}
+							name="description"
+						/>
 					</div>
 				</div>
 

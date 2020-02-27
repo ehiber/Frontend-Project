@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Link, useRouteMatch, Route, Switch } from "react-router-dom";
+import { Link, useRouteMatch, Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
-import JuegosPC from "./JuegosPC";
-import JuegosXO from "./JuegosXO";
-import JuegosM from "./JuegosM";
-import JuegosPS from "./JuegosPS";
-import JuegosNS from "./JuegosNS";
+import CardGame from "../component/CardGame.js";
 
 export const Juegos = props => {
 	const { store, actions } = useContext(Context);
 	const match = useRouteMatch();
+	// let gamesToRender = store.games.filter(games => {
+	// 	console.log(games.filterGame, match.params.filter);
+	// 	return games.filterGame === match.params.filter;
+	// });
+	let gamesToRender = store.games.filter(game => {
+		let shouldRender = false;
+		for (let filter of game.filterGame) {
+			if (filter == match.params.filter) {
+				return (shouldRender = true);
+			}
+		}
+		return shouldRender;
+	});
+
 	return (
 		<Fragment>
 			<div className="jumbotron">
@@ -52,23 +62,47 @@ export const Juegos = props => {
 					</div>
 				</div>
 			</nav>
-			<h2>{"Hola soy juegos con el filtro " + match.params.filter}</h2>
-			{/* <Switch>
-				<Route exact path={match.path + "/:filter"}>
-					
-				</Route>
-				<Route exact path={match.path}>
-					<h2>Hola, no hay filtro</h2>
-				</Route>
-				<Route exact path="/juegos/ps4" component={JuegosPS} />
-				<Route exact path="/juegos/nintendo-switch" component={JuegosNS} />
-				<Route exact path="/juegos/movil" component={JuegosM} />
-				<Route render={() => <h1>Not found!</h1>} />
-			</Switch> */}
+
+			{match.params.filter == undefined ? (
+				<div className="container-fluid">
+					<div className="row">
+						{store.games.map(game => {
+							return (
+								<CardGame
+									key={Math.random()}
+									title={game.title}
+									plataform={game.plataform}
+									portada="https://via.placeholder.com/180x250"
+									gameLink={game.gameLink}
+								/>
+							);
+						})}
+					</div>
+				</div>
+			) : (
+				<div className="container-fluid">
+					<div className="row">
+						{gamesToRender.map(game => {
+							return (
+								<CardGame
+									key={Math.random()}
+									title={game.title}
+									plataform={game.plataform}
+									portada="https://via.placeholder.com/180x250"
+									gameLink={game.gameLink}
+								/>
+							);
+						})}
+					</div>
+				</div>
+			)}
 		</Fragment>
 	);
 };
 
-// Juegos.propTypes = {
-// 	match: PropTypes.object
-// };
+Juegos.propTypes = {
+	title: PropTypes.string,
+	plataform: PropTypes.array,
+	portada: PropTypes.string,
+	gameLink: PropTypes.string
+};

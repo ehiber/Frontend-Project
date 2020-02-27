@@ -1,3 +1,24 @@
 /* 
     General Styles
 */
+
+.login-gaming{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ2A6CEMN_wNSsinyKyxWubxbTvcpHI8Dm73U-8_CLIhMwUTTXA");
+    background-size: cover;
+    width: 100%;
+    height: 100h;
+    text-align: -webkit-center;
+}
+
+.form-login-gaming{
+    background-color: white;
+    width: 450px;
+    height: 45vh;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 150px 0 200px;
+}
+
+.form-group{
+    margin-top: 30px;
+}

@@ -29,13 +29,13 @@ export const Navbar = () => {
 
 				<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div className="navbar-nav list-group-horizontal">
-						<Link className="nav-item nav-link mx-3" to="/Juegos">
+						<Link className="nav-item nav-link mx-3" to="/juegos">
 							Juegos
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/Torneos">
+						<Link className="nav-item nav-link mx-3" to="/torneos">
 							Torneos
 						</Link>
-						<Link className="nav-item nav-link mx-3" to="/">
+						<Link className="nav-item nav-link mx-3" to="/ernesto">
 							Otra Vista
 						</Link>
 					</div>
