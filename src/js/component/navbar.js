@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import logo from "../../img/LOGO_GAMING.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -13,7 +14,9 @@ export const Navbar = () => {
 		<Fragment>
 			<nav className="navbar navbar-expand-md navbar-dark bg-dark">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">LOGO</span>
+					<span className="navbar-brand mb-0 h1">
+						<img src={logo} className="logo-navbar" />
+					</span>
 				</Link>
 
 				<button
@@ -34,9 +37,6 @@ export const Navbar = () => {
 						</Link>
 						<Link className="nav-item nav-link mx-3" to="/torneos">
 							Torneos
-						</Link>
-						<Link className="nav-item nav-link mx-3" to="/ernesto">
-							Otra Vista
 						</Link>
 					</div>
 				</div>

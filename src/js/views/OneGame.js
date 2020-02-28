@@ -1,11 +1,12 @@
 import React, { useState, useContext, Fragment } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 const OneGame = props => {
 	const { store, actions } = useContext(Context);
 	const match = useRouteMatch();
+	let history = useHistory();
 	let oneGameObject = "";
 	const [show, setShow] = useState({
 		firstParam: false,
@@ -30,10 +31,16 @@ const OneGame = props => {
 	});
 
 	const handleClick = async tournamentId => {
-		if (actions.fetchInscription(tournamentId)) {
-			handleShow(true);
+		if (store.isLogIn == false) {
+			history.push("/login");
 		} else {
-			handleShow(false);
+			let isOk = await actions.fetchInscription(tournamentId);
+
+			if (isOk) {
+				handleShow(true);
+			} else {
+				handleShow(false);
+			}
 		}
 	};
 

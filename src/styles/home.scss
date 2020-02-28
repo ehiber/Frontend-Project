@@ -27,19 +27,33 @@ body{
 
 .second-block{
     margin: 0 0;
-    background: rgba($color: #317fe6, $alpha: 1.0);
-    width: 100%;
-    height: auto;
-}
-.third-block{
-    margin: 0 0;
     background: rgba($color: #e7e7e7, $alpha: 1.0);
     width: 100%;
     height: auto;
+    text-align: center;
+}
+.text-second-block{
+    align-self: center;
+}
+.third-block{
+    margin: 0 0;
+    background: rgba($color: #317fe6, $alpha: 1.0);
+    width: 100%;
+    height: auto;
+    align-self: center;
+    text-align: center;
+}
+.text-third-block{
+    align-self: center;
 }
 .fourth-block{
     margin: 0 0;
-    background: palegoldenrod;
+    background: rgba($color: #e7e7e7, $alpha: 1.0);;
     width: 100%;
     height: auto;
+    align-self: center;
+    text-align: center;
+}
+.text-fourth-block{
+    align-self: center;
 }

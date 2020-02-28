@@ -190,6 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchInscription: async tournamentId => {
+				const store = getStore();
 				let successfulInscriptionTournament = false;
 				let newDate = new Date();
 				try {
@@ -203,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							body: JSON.stringify({
 								action: "take part",
 								status: "sin pagar",
-								date_inscription: newDate
+								date_inscription: "2020/3/5"
 							})
 						}
 					);
